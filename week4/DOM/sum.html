@@ -7,8 +7,8 @@
 </head>
 <body>
     <form>
-    First number:  <input id="n1" type="text" value="5"> <br>
-    Second Number: <input id="n2" type="text" value="6"> <br>
+    First number:  <input id="n1" type="text"> <br>  <!-- onChange, onInput-->
+    Second Number: <input id="n2" type="text"> <br>
     <button type="button" onclick="sum()">Sum</button>
     <p id="ans"></p>
 </form>
@@ -20,7 +20,7 @@
          let n2 = parseInt(document.getElementById("n2").value);
         
          let sum = n1+n2;
-         document.getElementById("ans").innerHTML = sum;
+         document.getElementById("ans").innerHTML ="Sum is "+ sum;
     }
  </script>
 
