@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content"></div>
+    <button onclick="fetchSomething()">click this</button>
+</body>
+<script>
+    //async function fetchSomething(){
+       // let responce =await fetch("https://ron-swanson-quotes.herokuapp.com/v2/quotes");
+       // let finaldata = await responce.json();
+       // console.log(finaldata)
+    //}
+
+    function fetchSomething(){
+        fetch("https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400")
+        .then((response)=>{
+            response.json()
+            .then((finaldata)=>{
+                document.getElementById("content").innerHTML = JSON.stringify(finaldata);
+            })
+        })
+    }
+</script>
+</html>
