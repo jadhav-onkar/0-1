@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="title" type="text" placeholder="title"> <br><br>
+    <input id="description" type="text" placeholder="description"> <br><br>
+
+    <div id="container"></div> <br><br>
+
+    <script>
+        let id = 1;
+    
+        function createChild(title, description, id){
+            const bigchild = document.createElement("div");
+            const firstChild = document.createElement("div");
+            const SecondChild = document.createElement("div")
+            const ThirdChild = document.createElement("button")
+            
+            bigchild.setAttribute("id", id )
+    
+            firstChild.innerHTML = title;
+            SecondChild.innerHTML = description;
+            ThirdChild.innerHTML = "mark as done"
+    
+            bigchild.appendChild(firstChild)
+            bigchild.appendChild(SecondChild)
+            bigchild.appendChild(ThirdChild)
+    
+            return bigchild
+        }
+    
+        function UpdatedState(state){
+            document.getElementById("container").innerHTML = ""
+            for (i=0; i<state.length; i++){
+                let chileToBeAppended = createChild(state[i].title, state[i].description, state[i].id);
+                document.getElementById("container").appendChild(chileToBeAppended);
+            }
+        }
+        UpdatedState([{
+            title: "go to gym",
+            description: "at 11 pm",
+            id: 1
+        },{
+            title: "go to gym2",
+            description: "at 10 pm",
+            id: 1
+        }])
+        
+    </script>
+</body>
+</html>
