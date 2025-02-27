@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let id = 1;
+
+    function done(id){
+        const parentDiv = document.getElementById(id);
+        parentDiv.children[2].innerHTML = "done"
+    }
+
+    function createChild(title, description, id){
+        const bigchild = document.createElement("div");
+        const firstChild = document.createElement("div");
+        const SecondChild = document.createElement("div")
+        const ThirdChild = document.createElement("button")
+        
+        bigchild.setAttribute("id", id )
+        ThirdChild.setAttribute("onclick", `done(${id})`)
+
+        firstChild.innerHTML = title;
+        SecondChild.innerHTML = description;
+        ThirdChild.innerHTML = "mark as done"
+
+        bigchild.appendChild(firstChild)
+        bigchild.appendChild(SecondChild)
+        bigchild.appendChild(ThirdChild)
+
+        return bigchild
+    }
+
+    function addChild(){
+        const title = document.getElementById("title").value;
+        const description = document.getElementById("description").value;
+        const parent = document.getElementById("container");
+
+        parent.appendChild(createChild(title, description, id++));
+    }
+</script>
+<body>
+    <input id="title" type="text" placeholder="title"> <br><br>
+    <input id="description" type="text" placeholder="description"> <br><br>
+    <button type="button" onclick="addChild()">Add todo</button> <br><br>
+
+    <div id="container"></div> <br><br>
+</body>
+</html>
