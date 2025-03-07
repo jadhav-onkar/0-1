@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counter</title>
+</head>
+<body>
+    <div id="parent">
+
+    </div>
+    <script>
+        const state = {
+            count : 0
+        }
+
+        function counter(){
+            state.count++;
+            re_rendering()
+        }
+
+        function re_rendering(){
+            let parent = document.getElementById("parent");
+            parent.innerHTML = "";
+            let child = buttonComponent(state.count);
+            console.log(child)
+            parent.appendChild(child)
+        }
+
+        function buttonComponent(count){
+            let button = document.createElement("button");
+            button.innerHTML = `Counter ${count}`;
+            button.setAttribute("onclick", "counter()");
+            return button;
+        }
+
+        re_rendering()
+    </script>
+</body>
+</html>
