@@ -1,7 +1,14 @@
-export function Todo(){
-    return <div>
-        <h1>go to gym</h1>
-        <h3>go to gym at 8 AM</h3>
-        <button>mark as completed</button>
-    </div>
+
+export function Todo({todos}){
+    return (
+        <div>
+            {todos.map(function(todo){
+                return <div>
+                    <h2>{todo.title}</h2>
+                    <h3>{todo.description}</h3>
+                    <button>{todo.completed ? "completed" : "mark as completed"}</button>
+                </div>
+            })}
+        </div>
+    )
 }
