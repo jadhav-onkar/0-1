@@ -21,15 +21,15 @@ function App() {
       }}>Dashboard</button> */  }
 
 
-    <React.Suspense fallback={<div>Loading...</div>}>
+    <React.Suspense fallback={<div>Loading...</div>}></React.Suspense>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/' element={<Landing />} />
+          <Route path='/dashboard' element={<React.Suspense fallback={<div>Loading...</div>}><Dashboard /></React.Suspense>} />
+          <Route path='/' element={<React.Suspense fallback={<div>Loading...</div>}><Landing /></React.Suspense>} />
         </Routes>
       </BrowserRouter>
-    </React.Suspense>
+    
     </div>
   )
      
