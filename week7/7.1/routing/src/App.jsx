@@ -1,33 +1,38 @@
-import { useState } from 'react'
-import { Dashboard } from './components/Dashboard'
-import { Landing } from './components/Landing'
+import React, { useState } from 'react'
+const Dashboard = React.lazy(()=> import('./components/Dashboard')) 
+const Landing = React.lazy(()=> import('./components/Landing')) 
+// use React.lazy
+
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom"
 
 function App() {
 
   return (
     <div>
-    {/* 
-    it couses re-render
-    instead useNavigate hook
+      {/* 
+      it causes re-render
+      instead useNavigate hook
+  
+      <button onClick={()=>{
+        window.location.href = "/"
+      }}>Landing</button>
+      <button onClick={()=>{
+        window.location.href = "/dashboard"
+      }}>Dashboard</button> */  }
 
-    <button onClick={()=>{
-      window.location.href = "/"
-    }}>Landing</button>
-    <button onClick={()=>{
-      window.location.href = "/dashboard"
-    }}>Dashboard</button> */  }
 
-
-    <BrowserRouter>
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <BrowserRouter>
         <Navbar />
-      <Routes>
-        <Route path='/dashboard' element={<Dashboard/>} />
-        <Route path='/' element={<Landing/>} />
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/' element={<Landing />} />
+        </Routes>
+      </BrowserRouter>
+    </React.Suspense>
     </div>
   )
+     
 }
 
 function Navbar(){
