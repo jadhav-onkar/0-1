@@ -20,13 +20,12 @@ function App() {
         window.location.href = "/dashboard"
       }}>Dashboard</button> */  }
 
-
-    <React.Suspense fallback={<div>Loading...</div>}></React.Suspense>
+  <h1>this is home page</h1>
       <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path='/dashboard' element={<React.Suspense fallback={<div>Loading...</div>}><Dashboard /></React.Suspense>} />
-          <Route path='/' element={<React.Suspense fallback={<div>Loading...</div>}><Landing /></React.Suspense>} />
+          <Route path='/landing' element={<React.Suspense fallback={<div>Loading...</div>}><Landing /></React.Suspense>} />
         </Routes>
       </BrowserRouter>
     
@@ -40,7 +39,7 @@ function Navbar(){
   return(
     <div>
       <button onClick={()=>{
-        navigate("/")
+        navigate("/landing")
       }}>Landing</button>
       <button onClick={()=>{
         navigate("/dashboard")
