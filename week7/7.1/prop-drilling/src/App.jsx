@@ -9,6 +9,7 @@ function App() {
   )
 }
 
+// prop drilling makes code look clean make tree diagram to understand
 function Counter(){
   const [count, setCount] = useState(0)
   return (
