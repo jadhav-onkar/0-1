@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import React from 'react'
-import { RecoilRoot, useRecoilState, useRecoilValue } from 'recoil';
+import { RecoilRoot, useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { countAtom } from './store/atom/count';
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
 }
 
 function Counter(){
+  console.log("rendering...")
   return (
     <div> 
     <RecoilRoot>
@@ -31,12 +32,14 @@ function RenderCounter(){
 }
 
 const  UpdateCounter = ()=>{
-  const [,setCount] = useRecoilState(countAtom)
-
+  const setCount = useSetRecoilState(countAtom)
+  const countReset = useResetRecoilState(countAtom)
+  console.log("buttons rerenders..")
   return(
   <>
     <button onClick={()=>{setCount(c=>c+1)}}>Increment</button>
     <button onClick={()=>{setCount(c=>c-1)}}>Decreament</button>
+    <button onClick={countReset}>Reset</button>
   </>
   )
 }
