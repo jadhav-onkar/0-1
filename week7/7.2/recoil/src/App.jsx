@@ -18,6 +18,7 @@ function Counter(){
     <RecoilRoot>
       <RenderCounter />
       <UpdateCounter  />
+      <IsEven />
     </RecoilRoot>
     </div>
 
@@ -42,5 +43,12 @@ const  UpdateCounter = ()=>{
     <button onClick={countReset}>Reset</button>
   </>
   )
+}
+
+const IsEven = ()=>{
+  const count = useRecoilValue(countAtom)
+  return <div>
+    {count%2 == 0 ? "It is even" : ""}
+  </div>
 }
 export default App
