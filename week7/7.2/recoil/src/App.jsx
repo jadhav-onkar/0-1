@@ -2,6 +2,8 @@ import { useState } from 'react'
 import React from 'react'
 import { RecoilRoot, useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { countAtom } from './store/atom/count';
+import { IsEvenSelector } from './store/selector/isEven';
+
 
 function App() {
   return (
@@ -12,7 +14,6 @@ function App() {
 }
 
 function Counter(){
-  console.log("rendering...")
   return (
     <div> 
     <RecoilRoot>
@@ -35,7 +36,6 @@ function RenderCounter(){
 const  UpdateCounter = ()=>{
   const setCount = useSetRecoilState(countAtom)
   const countReset = useResetRecoilState(countAtom)
-  console.log("buttons rerenders..")
   return(
   <>
     <button onClick={()=>{setCount(c=>c+1)}}>Increment</button>
@@ -46,9 +46,10 @@ const  UpdateCounter = ()=>{
 }
 
 const IsEven = ()=>{
-  const count = useRecoilValue(countAtom)
+  console.log("IsEven rendered...")
+  const isEven = useRecoilValue(IsEvenSelector)
   return <div>
-    {count%2 == 0 ? "It is even" : ""}
+    {isEven}
   </div>
 }
 export default App
