@@ -13,7 +13,7 @@ export function InputBoxes(){
         <>
             <input type="text" placeholder="title" onChange={(e)=>setTitle(e.target.value)} /> <br /> <br />
             <input type="text" placeholder="description" onChange={(e)=>setDescription(e.target.value)}/> <br /> <br />
-            <button onClick={addTodo}>Add todo</button>
+            <button onClick={addTodo}>Add todo</button> <br /><br />
         </>
     )
 }

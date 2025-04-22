@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { RecoilRoot } from "recoil"
 import { RenderTodos } from './Components/Todo'
 import { InputBoxes } from './Components/Input'
-
+import { Filter } from './Components/Filter' 
 
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
     <div>
       <RecoilRoot>
         <InputBoxes />
+        <Filter />
         <RenderTodos />
       </RecoilRoot>
     </div>
