@@ -16,12 +16,6 @@ function MainApp(){
   const [notification, setNotificationCount] = useRecoilState(notificationCount)
   const total = useRecoilValue(totalSum)
 
-  useEffect(()=>{
-    axios.get('http://localhost:3000/notification').then((res)=>{
-      setNotificationCount(res.data)
-    })
-  },[])
-
   console.log(notification)
   return (
     <>
