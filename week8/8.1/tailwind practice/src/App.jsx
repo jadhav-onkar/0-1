@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { Flex } from './Flex'
 import './App.css';
+import { Grid } from './Grid';
+import { Responsive } from './Responsive';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div>
-      <Flex />
+      {/* <Flex /> */}
+      {/* <Grid /> */}
+      <Responsive />
     </div>
   )
 }
