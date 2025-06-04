@@ -15,6 +15,7 @@ function useTodos(sec){
     function fetchTodos(){
       axios.get('http://localhost:3000/todos').then((res)=>{
         setTodos(res.data.todos)
+        console.log(res.data.todos)
         setLoading(false)
       })
     }
