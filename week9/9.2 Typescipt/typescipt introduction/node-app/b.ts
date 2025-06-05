@@ -12,14 +12,14 @@ function isLegal(age:number):boolean{
     }
 }
 
-function runafter1S(fn: ()=> void){
+function runafter1S(fn: (fname:string)=> void){
     setTimeout(()=>{
-        console.log(fn())
+        console.log(fn("ganesh"))
     }, 1000)
 }
 
-runafter1S(()=>{
-    return "hello"
+runafter1S((fname:string)=>{
+    return `hello ${fname}`
 })
 
 console.log(isLegal(12))

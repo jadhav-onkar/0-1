@@ -25,6 +25,5 @@ console.log(isLegal({
 greet({
     fname: "onkar",
     lname: "jadhav",
-
     age: 17
 })

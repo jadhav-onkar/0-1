@@ -12,10 +12,10 @@ function isLegal(age) {
 }
 function runafter1S(fn) {
     setTimeout(() => {
-        console.log(fn());
+        console.log(fn("ganesh"));
     }, 1000);
 }
-runafter1S(() => {
-    return "hello";
+runafter1S((fname) => {
+    return `hello ${fname}`;
 });
 console.log(isLegal(12));
