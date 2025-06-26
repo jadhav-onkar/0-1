@@ -115,8 +115,6 @@ function insertIntoAddress(userID, city, state, contry) {
         }
     });
 }
-// insertIntoAddress(2,"Pune","Maharashtra","India") // throws an error
-// insertIntoAddress(1,"Pune","Maharashtra","India")
 function getFromUserAddress(userID) {
     return __awaiter(this, void 0, void 0, function* () {
         yield client.connect();
