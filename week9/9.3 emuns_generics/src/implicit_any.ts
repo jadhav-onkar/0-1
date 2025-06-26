@@ -2,7 +2,7 @@
 //  "noImplicitAny": true,     /* Enable error reporting for expressions and declarations with an implied 'any' type. */
 
 
-function add(a, b){
+function add(a:any, b:any){
     return a+b
 }
 
