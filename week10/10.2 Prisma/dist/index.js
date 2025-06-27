@@ -31,8 +31,83 @@ const insertIntoUser = (userDetails) => __awaiter(void 0, void 0, void 0, functi
         console.log(e, "error found");
     }
 });
-insertIntoUser({
-    email: "vaibhav@gmail.com",
-    name: "Vaibhav",
-    password: "Vaibhav@0230"
+const updateUser = (email, password) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const updateData = yield prisma.user.update({
+            where: {
+                email
+            },
+            data: {
+                password
+            },
+            select: {
+                id: true,
+                email: true,
+                password: true
+            }
+        });
+        console.log(updateData);
+    }
+    catch (e) {
+        console.log(e, "error found");
+    }
 });
+const getSpecificUser = (email) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield prisma.user.findUnique({
+            where: {
+                email
+            },
+            select: {
+                id: true,
+                email: true,
+                password: true
+            }
+        });
+        console.log(data ? data : "user not found");
+    }
+    catch (e) {
+        console.log(e, "error found");
+    }
+});
+const getAllUsers = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield prisma.user.findMany({
+            orderBy: {
+                id: 'asc'
+            }
+        });
+        console.log(data);
+    }
+    catch (e) {
+        console.log(e, "error found");
+    }
+});
+const deleteOne = (email) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const deleted = yield prisma.user.delete({
+            where: {
+                email
+            },
+            select: {
+                id: true,
+                email: true
+            }
+        });
+        console.log(deleted ? deleted : "Data not found");
+    }
+    catch (e) {
+        if (e instanceof client_1.Prisma.PrismaClientKnownRequestError) {
+            if (e.code === 'P2025') {
+                console.log('No matching record found for deletion (P2025)');
+            }
+            else {
+                console.log(`Prisma error ${e.code}:`, e.message);
+            }
+        }
+        else {
+            console.log('Unexpected error:', e);
+        }
+    }
+});
+deleteOne("test@gmail.com");
