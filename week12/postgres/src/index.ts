@@ -106,15 +106,5 @@ async function transactions(user:User, address:Address){
 
 }
 
-transactions({
-    username:"amey",
-    gmail:"amey@gmail.com",
-    password:"amey123"
-},
-{
-    city:"banglore",
-    country:"india",
-    pincode:411006
-})
 
  
