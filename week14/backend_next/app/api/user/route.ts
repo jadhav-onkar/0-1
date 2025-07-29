@@ -1,27 +1,39 @@
 import { PrismaClient } from "@prisma/client";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from '@/db'
 
 
-const client = new PrismaClient()
 
-export function GET(){
-    return Response.json({
+export async function GET(){
+    const user = await prisma.user.findFirst()
+    return NextResponse.json({
         name:"ganesh",
-        email:"ganesh@gmail.com"
+        email: user?.email
     })
 }
 
 export async function POST(req:NextRequest){
     const body = await req.json();
-    const user = await client.user.create({
-        data:{
-            email:body.username,
-            password:body.password
-        }
-    })
-
-    return Response.json({
-        user,
-        msg:"you are signed in succesfully"
-    })
+    console.log(body)
+    try{
+        const user = await prisma.user.create({
+            data:{
+                email:body.username,
+                password:body.password
+            }
+        })
+    
+        return NextResponse.json({
+            user,
+            msg:"you are signed in succesfully"
+        })
+    }
+    catch(e){
+        return NextResponse.json({
+            e,
+            msg:"something went wrong"
+        },{
+            status:401
+        })
+    }
 }   
