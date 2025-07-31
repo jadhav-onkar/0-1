@@ -1,0 +1,22 @@
+{
+  "name": "15_1_docker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -b"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^6.13.0",
+    "@types/express": "^5.0.3",
+    "express": "^5.1.0",
+    "prisma": "^6.13.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
