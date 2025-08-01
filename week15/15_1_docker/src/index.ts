@@ -6,8 +6,9 @@ const app = express()
 const client = new PrismaClient()
 app.use(express.json())
 
+
 app.get("/",(req,res)=>{
-    res.send("hi there ")
+    res.send("hi there from ganesh")
 })
 
 app.post("/blogs",async (req,res)=>{
