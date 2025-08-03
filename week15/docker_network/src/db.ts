@@ -1,7 +1,7 @@
 
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb://mymongo:27017/course").then(()=>{
+mongoose.connect( process.env.DB_URL || "mongodb://mymongo:27017/course").then(()=>{
     console.log("db connected succesfully")
 }).catch(e=>{
     console.log("error while connecting")
