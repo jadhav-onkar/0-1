@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Cookies</title>
+</head>
+<body>
+    <div>
+        <input id="username" type="text" placeholder="username">
+        <input id="pass" type="text" placeholder="password">
+        <button id="submit">Submit</button>
+        <button id="logout">Logout</button>
+        <h1 id="user_details"></h1>
+    </div>
+</body>
+<script>
+    document.getElementById('submit').addEventListener('click',async ()=>{
+        const username = document.getElementById('username').value
+        const password = document.getElementById('pass').value
+         try {
+            await axios.post(`/signin`, {
+                username,
+                password
+            });
+            alert("You are logged in");
+        } catch (error) {
+            console.error('Login failed:', error);
+            alert("Login failed");
+        }
+        });
+
+    document.getElementById('logout').addEventListener('click',async ()=>{
+        try{
+            await axios.post('/logout')
+            alert("logged out succesfully")
+        }    
+        catch(e){
+            console.log("error occured", e)
+        }
+    })
+
+    const fetch_User = async ()=>{
+        const res =await axios.get('/user')
+        document.getElementById('user_details').innerHTML =`user id =  ${res.data.userid}` 
+    }
+    fetch_User()
+</script>
+</html>
