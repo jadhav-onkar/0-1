@@ -1,23 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import NextAuth from 'next-auth'
-import CredentialsProvider from "next-auth/providers/credentials";
+import { Provider } from "@/app/lib/provider";
 
-const handler = NextAuth({
-    providers:[
-        CredentialsProvider({
-            name:'Email',
-            credentials:{
-                username: {label:"email", placeholder:"xyz@gmail.com",type:"text"},
-                password: {label:"password", placeholder:"password",type:"password"},
-            },
-            async authorize(credentials,req){
-                console.log(credentials?.username)
-                console.log(credentials?.password)
-                return {id: "1"}
-            }
-        })
-    ]
-})
+const handler = NextAuth(Provider)
 
 export { handler as GET, handler as POST };
 
